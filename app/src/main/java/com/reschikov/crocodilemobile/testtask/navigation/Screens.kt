@@ -1,6 +1,5 @@
 package com.reschikov.crocodilemobile.testtask.navigation
 
-import com.reschikov.crocodilemobile.testtask.ui.fragments.LinkFragment
 import com.reschikov.crocodilemobile.testtask.ui.fragments.LoadFragment
 import com.reschikov.crocodilemobile.testtask.ui.fragments.TinderFragment
 import com.reschikov.crocodilemobile.testtask.ui.fragments.WebFragment
@@ -10,10 +9,6 @@ sealed class Screens : SupportAppScreen(){
 
     class LoadingScreen : Screens() {
         override fun getFragment() = LoadFragment()
-    }
-
-    class LinkScreen : Screens() {
-        override fun getFragment() = LinkFragment()
     }
 
     class WebScreen : Screens(){

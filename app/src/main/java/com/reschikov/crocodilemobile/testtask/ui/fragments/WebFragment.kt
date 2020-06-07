@@ -1,6 +1,5 @@
 package com.reschikov.crocodilemobile.testtask.ui.fragments
 
-import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.webkit.*
@@ -9,8 +8,8 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.reschikov.crocodilemobile.testtask.BuildConfig
 import com.reschikov.crocodilemobile.testtask.R
-import com.reschikov.crocodilemobile.testtask.USER_LINK
 import com.reschikov.crocodilemobile.testtask.navigation.Screens
 import com.reschikov.crocodilemobile.testtask.network.CheckNetWork
 import com.reschikov.crocodilemobile.testtask.ui.viewmodel.LinkViewModel
@@ -45,7 +44,7 @@ class WebFragment : Fragment(R.layout.fragment_web){
     }
 
     private fun checkRequestUrl(requestUrl: String) : Boolean {
-        val userUrl = get<SharedPreferences>().getString(USER_LINK, null) ?: return false
+        val userUrl = BuildConfig.URL_TEST
         return requestUrl == userUrl
     }
 

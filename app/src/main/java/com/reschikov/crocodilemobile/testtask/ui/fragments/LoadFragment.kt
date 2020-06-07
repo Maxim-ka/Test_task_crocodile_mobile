@@ -1,11 +1,11 @@
 package com.reschikov.crocodilemobile.testtask.ui.fragments
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.reschikov.crocodilemobile.testtask.BuildConfig
 import com.reschikov.crocodilemobile.testtask.R
 import com.reschikov.crocodilemobile.testtask.USER_LINK
 import com.reschikov.crocodilemobile.testtask.navigation.Screens
@@ -14,6 +14,7 @@ import com.reschikov.crocodilemobile.testtask.ui.viewmodel.LinkViewModel
 import com.reschikov.crocodilemobile.testtask.ui.viewmodel.ViewModelFactory
 import com.reschikov.crocodilemobile.testtask.utils.createShowAsUrl
 import com.reschikov.crocodilemobile.testtask.utils.showAlertDialog
+import com.yandex.metrica.YandexMetrica
 import kotlinx.android.synthetic.main.fragment_load.*
 import org.koin.android.ext.android.get
 import ru.terrakok.cicerone.Router
@@ -67,16 +68,10 @@ class LoadFragment : Fragment(R.layout.fragment_load) {
 
     private fun goOver(){
         if (hasNoNetWork) return
-        val link = getLinkUser()
-        val screen = if (link == null) Screens.LinkScreen() else {
-            viewModel.setLink(link)
-            Screens.WebScreen()
-        }
-        router?.replaceScreen(screen)
-    }
-
-    private fun getLinkUser() : String?{
-        return get<SharedPreferences>().getString(USER_LINK, null)
+        val link = BuildConfig.URL_TEST
+        viewModel.setLink(link)
+        YandexMetrica.reportEvent(USER_LINK, mapOf( USER_LINK to link))
+        router?.replaceScreen(Screens.WebScreen())
     }
 
     override fun onStop() {

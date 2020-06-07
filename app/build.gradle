@@ -35,7 +35,7 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-    flavorDimensions 'api'
+    flavorDimensions 'api', 'task'
     productFlavors {
         api17 {
             dimension = 'api'
@@ -47,6 +47,16 @@ android {
             dimension = 'api'
             minSdkVersion 21
             applicationIdSuffix = '.api21'
+        }
+        task{
+            dimension = 'task'
+            buildConfigField ('String', 'URL_TEST', '\"http://178.128.242.32/test\"')
+            applicationIdSuffix = '.task'
+        }
+        task2{
+            dimension = 'task'
+            buildConfigField ('String', 'URL_TEST', '\"http://178.128.242.32/test2\"')
+            applicationIdSuffix = '.task2'
         }
     }
 }
