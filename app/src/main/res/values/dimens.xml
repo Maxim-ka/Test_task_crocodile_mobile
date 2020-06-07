@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_size_badge">22sp</dimen>
+    <dimen name="text_size_link">28sp</dimen>
+    <dimen name="text_size_but">36sp</dimen>
+
+    <dimen name="indent_big">16dp</dimen>
+    <dimen name="indent">8dp</dimen>
+    <dimen name="indent_small">4dp</dimen>
+    <dimen name="indent_little">2dp</dimen>
+
+    <dimen name="width_stroke">8dp</dimen>
+
+</resources>

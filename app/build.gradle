@@ -1,0 +1,82 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'koin'
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        applicationId "com.reschikov.crocodilemobile.testtask"
+        minSdkVersion 17
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        manifestPlaceholders = [
+                onesignal_app_id: "eb9d295e-81d8-410d-852b-fcfd418d0880",
+                // Project number pulled from dashboard, local value is ignored.
+                onesignal_google_project_number: 'REMOTE'
+        ]
+        buildConfigField ('String', 'APP_METRICA_KEY', appmetricakey)
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility = "1.8"
+        targetCompatibility = "1.8"
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    flavorDimensions 'api'
+    productFlavors {
+        api17 {
+            dimension = 'api'
+            minSdkVersion 17
+            vectorDrawables.useSupportLibrary = true
+            applicationIdSuffix = '.api17'
+        }
+        api21 {
+            dimension = 'api'
+            minSdkVersion 21
+            applicationIdSuffix = '.api21'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // AppMetrica SDK.
+    implementation 'com.yandex.android:mobmetricalib:3.13.1'
+    // Play Install Referrer library.
+    implementation 'com.android.installreferrer:installreferrer:1.1.2'
+    //OneSignal
+    implementation 'com.onesignal:OneSignal:3.14.0'
+    //Okhttp
+    api17Implementation "com.squareup.okhttp3:okhttp:3.12.10"
+    api21Implementation "com.squareup.okhttp3:okhttp:3.14.7"
+    //cicerone
+    implementation 'ru.terrakok.cicerone:cicerone:5.0.0'
+    //koin
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7'
+    //androidx
+    implementation "androidx.lifecycle:lifecycle-livedata:2.2.0"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //tests
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}

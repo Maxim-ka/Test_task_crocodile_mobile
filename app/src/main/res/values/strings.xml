@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Test_task_crocodile_mobile</string>
+    <string name="but_start">start</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="http_178_128_242_32_test">http://178.128.242.32/test</string>
+    <string name="http_178_128_242_32_test2">http://178.128.242.32/test2</string>
+    <string name="err_no_network">No network connection</string>
+    <string name="but_ok">OK</string>
+    <string name="attention">Attention!</string>
+    <string name="notif_name_one_signals">OneSignalsNotice</string>
+    <string name="notif_push">OneSignals Push</string>
+</resources>
